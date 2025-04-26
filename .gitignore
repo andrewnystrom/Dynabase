@@ -1,0 +1,58 @@
+# macOS
+.DS_Store
+
+# Node.js / React (frontend/)
+frontend/node_modules/
+frontend/build/
+frontend/dist/
+
+# React environment files
+frontend/.env
+frontend/.env.local
+frontend/.env.development.local
+frontend/.env.test.local
+frontend/.env.production.local
+
+# Java / Quarkus (backend/)
+backend/target/
+backend/.classpath
+backend/.project
+backend/.settings/
+backend/.idea/
+backend/.vscode/
+
+# Java environment files
+backend/*.iml
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Docker
+*.tgz
+*.tar.gz
+docker-compose.override.yml
+
+# Optional: IntelliJ / JetBrains IDEs
+.idea/
+
+# Optional: VSCode
+.vscode/
+
+# Backup files
+*.bak
+*.swp
+*.swo
+
+# Others you might encounter
+.env
+*.pid
+*.seed
+*.pid.lock
