@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from 'react';
 import { login as loginService } from '../services/AuthService';
-import { setAuthToken, clearAuthToken } from '../services/api';
-import api from '../services/api';
+import { setAuthToken, clearAuthToken } from '../services/api.ts';
+import api from '../services/api.ts';
 
 interface AuthContextType {
   accessToken: string | null;
@@ -30,7 +30,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setAccessTokenState(null);
     setRoles(null);
     clearAuthToken();
-    window.location.href = 'http://localhost:8081/logout';
+    window.location.href = 'http://localhost:8180/realms/dynabase/protocol/openid-connect/logout?post_logout_redirect_uri=http%3A%2F%2Flocalhost%3A3000/signout&client_id=dynabase-frontend';
   };
 
   return (

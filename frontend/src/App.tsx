@@ -21,7 +21,7 @@ import Home from "./pages/Dashboard/Home";
 import Scripts from "./pages/Scripts";
 import { AuthProvider } from "./hooks/useAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
-
+import SignOut from "./pages/AuthPages/Signout";
 
 export default function App() {
   return (
@@ -47,7 +47,14 @@ export default function App() {
                   <Scripts />
                 </ProtectedRoute>
               } />
+
+
             </Route>
+
+            <Route path="/signout" element={
+
+              <SignOut />
+            } />
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
             <Route path="/calendar" element={<Calendar />} />
