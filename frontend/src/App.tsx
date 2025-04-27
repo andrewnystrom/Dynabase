@@ -19,16 +19,29 @@ import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
 
+import { AuthProvider } from "./hooks/useAuth";
+import ProtectedRoute from "./components/ProtectedRoute";
+
+
 export default function App() {
   return (
     <>
-      <Router>
-        <ScrollToTop />
-        <Routes>
-          {/* Dashboard Layout */}
-          <Route element={<AppLayout />}>
-            <Route index path="/" element={<Blank />} />
+      <AuthProvider>
+        <Router>
+          <ScrollToTop />
+          <Routes>
+            {/* Dashboard Layout */}
+            {/* <Route element={<AppLayout />}> */}
+            <Route index path="/" element={<SignIn />} />
 
+            {/* Authenticated Pages */}
+            <Route element={<AppLayout />}>
+              <Route path="/dashboard" element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              } />
+            </Route>
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
             <Route path="/calendar" element={<Calendar />} />
@@ -51,16 +64,17 @@ export default function App() {
             {/* Charts */}
             <Route path="/line-chart" element={<LineChart />} />
             <Route path="/bar-chart" element={<BarChart />} />
-          </Route>
+            {/* </Route> */}
 
-          {/* Auth Layout */}
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/signup" element={<SignUp />} />
+            {/* Auth Layout */}
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
 
-          {/* Fallback Route */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </Router>
+            {/* Fallback Route */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Router>
+      </AuthProvider>
     </>
   );
 }
