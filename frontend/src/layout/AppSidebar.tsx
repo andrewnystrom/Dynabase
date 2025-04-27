@@ -28,9 +28,9 @@ type NavItem = {
 const navItems: NavItem[] = [
   {
     icon: <GridIcon />,
-    name: "Dashboards",
+    name: "Popular Dashboards",
     subItems: [
-      { name: "Yoshi", path: "/blank", pro: true },
+      { name: "Admin View", path: "/dashboard", pro: true },
       { name: "Mario", path: "/blank", pro: false },
       { name: "Peach", path: "/blank", pro: false },
     ],
@@ -263,7 +263,7 @@ const AppSidebar: React.FC = () => {
                               : "menu-dropdown-badge-inactive"
                               } menu-dropdown-badge`}
                           >
-                            pro
+                            Admin Role
                           </span>
                         )}
                       </span>

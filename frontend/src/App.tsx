@@ -18,7 +18,7 @@ import Blank from "./pages/Blank";
 import AppLayout from "./layout/AppLayout";
 import { ScrollToTop } from "./components/common/ScrollToTop";
 import Home from "./pages/Dashboard/Home";
-
+import Scripts from "./pages/Scripts";
 import { AuthProvider } from "./hooks/useAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
 
@@ -39,6 +39,12 @@ export default function App() {
               <Route path="/dashboard" element={
                 <ProtectedRoute>
                   <Home />
+                </ProtectedRoute>
+              } />
+
+              <Route path="/scripts" element={
+                <ProtectedRoute>
+                  <Scripts />
                 </ProtectedRoute>
               } />
             </Route>

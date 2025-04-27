@@ -6,6 +6,8 @@ import {
   TableRow,
 } from "../../ui/table";
 
+import { BoltIcon } from "../../../icons";
+import Button from "../../ui/button/Button";
 import Badge from "../../ui/badge/Badge";
 
 interface Order {
@@ -28,11 +30,11 @@ const tableData: Order[] = [
   {
     id: 1,
     user: {
-      image: "/images/user/user-17.jpg",
-      name: "Lindsey Curtis",
-      role: "Web Designer",
+      image: "/images/icons/file-image.svg",
+      name: "Convert file",
+      role: "Converts a ZIP into a Document",
     },
-    projectName: "Agency Website",
+    projectName: "My cool website",
     team: {
       images: [
         "/images/user/user-22.jpg",
@@ -46,9 +48,9 @@ const tableData: Order[] = [
   {
     id: 2,
     user: {
-      image: "/images/user/user-18.jpg",
-      name: "Kaiya George",
-      role: "Project Manager",
+      image: "/images/icons/file-image.svg",
+      name: "Check Keycloak Status",
+      role: "Is Keycloak up-and-running? Run this and find out.",
     },
     projectName: "Technology",
     team: {
@@ -56,56 +58,6 @@ const tableData: Order[] = [
     },
     budget: "24.9K",
     status: "Pending",
-  },
-  {
-    id: 3,
-    user: {
-      image: "/images/user/user-17.jpg",
-      name: "Zain Geidt",
-      role: "Content Writing",
-    },
-    projectName: "Blog Writing",
-    team: {
-      images: ["/images/user/user-27.jpg"],
-    },
-    budget: "12.7K",
-    status: "Active",
-  },
-  {
-    id: 4,
-    user: {
-      image: "/images/user/user-20.jpg",
-      name: "Abram Schleifer",
-      role: "Digital Marketer",
-    },
-    projectName: "Social Media",
-    team: {
-      images: [
-        "/images/user/user-28.jpg",
-        "/images/user/user-29.jpg",
-        "/images/user/user-30.jpg",
-      ],
-    },
-    budget: "2.8K",
-    status: "Cancel",
-  },
-  {
-    id: 5,
-    user: {
-      image: "/images/user/user-21.jpg",
-      name: "Carla George",
-      role: "Front-end Developer",
-    },
-    projectName: "Website",
-    team: {
-      images: [
-        "/images/user/user-31.jpg",
-        "/images/user/user-32.jpg",
-        "/images/user/user-33.jpg",
-      ],
-    },
-    budget: "4.5K",
-    status: "Active",
   },
 ];
 
@@ -121,7 +73,7 @@ export default function BasicTableOne() {
                 isHeader
                 className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                User
+                Script Name
               </TableCell>
               <TableCell
                 isHeader
@@ -145,7 +97,7 @@ export default function BasicTableOne() {
                 isHeader
                 className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400"
               >
-                Budget
+                Let's go!
               </TableCell>
             </TableRow>
           </TableHeader>
@@ -179,7 +131,8 @@ export default function BasicTableOne() {
                 </TableCell>
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                   <div className="flex -space-x-2">
-                    {order.team.images.map((teamImage, index) => (
+                    My Cool Team
+                    {/* {order.team.images.map((teamImage, index) => (
                       <div
                         key={index}
                         className="w-6 h-6 overflow-hidden border-2 border-white rounded-full dark:border-gray-900"
@@ -192,7 +145,7 @@ export default function BasicTableOne() {
                           className="w-full size-6"
                         />
                       </div>
-                    ))}
+                    ))} */}
                   </div>
                 </TableCell>
                 <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
@@ -202,15 +155,15 @@ export default function BasicTableOne() {
                       order.status === "Active"
                         ? "success"
                         : order.status === "Pending"
-                        ? "warning"
-                        : "error"
+                          ? "warning"
+                          : "error"
                     }
                   >
                     {order.status}
                   </Badge>
                 </TableCell>
                 <TableCell className="px-4 py-3 text-gray-500 text-theme-sm dark:text-gray-400">
-                  {order.budget}
+                  <Button variant="outline">Start</Button>
                 </TableCell>
               </TableRow>
             ))}
