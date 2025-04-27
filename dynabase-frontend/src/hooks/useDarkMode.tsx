@@ -7,15 +7,25 @@ interface DarkModeContextType {
 
 const DarkModeContext = createContext<DarkModeContextType | undefined>(undefined);
 
+const THEME_LINK_ID = 'theme-css';
+
 export const DarkModeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [darkMode, setDarkMode] = useState<boolean>(false);
 
   useEffect(() => {
-    if (darkMode) {
-      import('primereact/resources/themes/lara-dark-indigo/theme.css');
-    } else {
-      import('primereact/resources/themes/lara-light-indigo/theme.css');
+    let themeLink = document.getElementById(THEME_LINK_ID) as HTMLLinkElement | null;
+
+    if (!themeLink) {
+      themeLink = document.createElement('link');
+      themeLink.rel = 'stylesheet';
+      themeLink.type = 'text/css';
+      themeLink.id = THEME_LINK_ID;
+      document.head.appendChild(themeLink);
     }
+
+    themeLink.href = darkMode
+      ? '/themes/dark.css'
+      : '/themes/light.css';
   }, [darkMode]);
 
   const toggleDarkMode = () => {

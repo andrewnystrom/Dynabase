@@ -6,7 +6,7 @@ export default function DarkModeToggle() {
 
   return (
     <Button
-      label={darkMode ? 'Light Mode' : 'Dark Mode'}
+
       icon={darkMode ? 'pi pi-sun' : 'pi pi-moon'}
       onClick={toggleDarkMode}
       className="p-mt-2"

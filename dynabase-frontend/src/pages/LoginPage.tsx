@@ -5,39 +5,61 @@ import { Button } from 'primereact/button';
 import { useAuth } from '../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
+import ApplicationLayout from '../layouts/ApplicationLayout';
 
 export default function LoginPage() {
   const { login } = useAuth();
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-
-  const navigate = useNavigate();
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       await login(username, password);
-      navigate('/admin');
-
+      navigate('/dashboard');
     } catch (error) {
       console.error('Login failed', error);
     }
   };
 
   return (
-    <div className="p-d-flex p-jc-center p-ai-center" style={{ height: '100vh' }}>
-      <form onSubmit={handleSubmit} style={{ width: 300 }}>
-        <div className="p-field">
-          <label htmlFor="username">Username</label>
-          <InputText id="username" value={username} onChange={(e) => setUsername(e.target.value)} />
-        </div>
-        <div className="p-field">
-          <label htmlFor="password">Password</label>
-          <Password id="password" value={password} onChange={(e) => setPassword(e.target.value)} feedback={false} />
-        </div>
-        <Button label="Login" type="submit" className="p-mt-2" />
-      </form>
-    </div>
+    <ApplicationLayout>
+      <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full">
+        <h1 className="text-3xl font-bold text-center text-indigo-700 mb-6">Dynabase Login</h1>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div>
+            <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+              Username
+            </label>
+            <InputText
+              id="username"
+              className="w-full"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter your username"
+            />
+          </div>
+
+          <div className="w-full space-y-6">
+            <label htmlFor="password" className="w-full block text-sm font-medium text-gray-700 mb-1">
+              Password
+            </label>
+            <Password
+              id="password"
+              inputClassName="w-full"
+              className="w-full"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              feedback={false}
+              toggleMask
+              placeholder="Enter your password"
+            />
+          </div>
+
+          <Button type="submit" label="Login" className="w-2 p-button-primary" />
+        </form>
+      </div>
+    </ApplicationLayout>
   );
 }

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import api from '../services/api';
 import LogoutButton from '../components/LogoutButton';
+import ApplicationLayout from '../layouts/ApplicationLayout';
 
 export default function DashboardPage() {
   const [profile, setProfile] = useState<any>(null);
@@ -12,7 +13,7 @@ export default function DashboardPage() {
   }, []);
 
   return (
-    <div className="p-m-4">
+    <ApplicationLayout>
       <h1>Dashboard</h1>
       {profile ? (
         <>
@@ -20,10 +21,11 @@ export default function DashboardPage() {
           <p>Email: {profile.email}</p>
           <p>Roles: {profile.roles.join(', ')}</p>
           <LogoutButton />
+
         </>
       ) : (
         <p>Loading profile...</p>
       )}
-    </div>
+    </ApplicationLayout>
   );
 }
