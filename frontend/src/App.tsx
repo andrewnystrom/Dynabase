@@ -27,7 +27,7 @@ export default function App() {
         <Routes>
           {/* Dashboard Layout */}
           <Route element={<AppLayout />}>
-            <Route index path="/" element={<Home />} />
+            <Route index path="/" element={<Blank />} />
 
             {/* Others Page */}
             <Route path="/profile" element={<UserProfiles />} />
