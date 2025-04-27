@@ -53,24 +53,24 @@ const navItems: NavItem[] = [
       { name: "Offboard", path: "/people/offboard" }
     ]
   },
-  {
-    name: "Forms",
-    icon: <ListIcon />,
-    subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
-  },
-  {
-    name: "Tables",
-    icon: <TableIcon />,
-    subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
-  },
-  {
-    name: "Pages",
-    icon: <PageIcon />,
-    subItems: [
-      { name: "Blank Page", path: "/blank", pro: false },
-      { name: "404 Error", path: "/error-404", pro: false },
-    ],
-  },
+  // {
+  //   name: "Forms",
+  //   icon: <ListIcon />,
+  //   subItems: [{ name: "Form Elements", path: "/form-elements", pro: false }],
+  // },
+  // {
+  //   name: "Tables",
+  //   icon: <TableIcon />,
+  //   subItems: [{ name: "Basic Tables", path: "/basic-tables", pro: false }],
+  // },
+  // {
+  //   name: "Pages",
+  //   icon: <PageIcon />,
+  //   subItems: [
+  //     { name: "Blank Page", path: "/blank", pro: false },
+  //     { name: "404 Error", path: "/error-404", pro: false },
+  //   ],
+  // },
 ];
 
 const othersItems: NavItem[] = [
@@ -93,15 +93,7 @@ const othersItems: NavItem[] = [
       { name: "Images", path: "/images", pro: false },
       { name: "Videos", path: "/videos", pro: false },
     ],
-  },
-  {
-    icon: <PlugInIcon />,
-    name: "Authentication",
-    subItems: [
-      { name: "Sign In", path: "/signin", pro: false },
-      { name: "Sign Up", path: "/signup", pro: false },
-    ],
-  },
+  }
 ];
 
 const AppSidebar: React.FC = () => {
@@ -343,7 +335,7 @@ const AppSidebar: React.FC = () => {
                   }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
-                  "Menu"
+                  "Tools"
                 ) : (
                   <HorizontaLDots className="size-6" />
                 )}
@@ -358,7 +350,7 @@ const AppSidebar: React.FC = () => {
                   }`}
               >
                 {isExpanded || isHovered || isMobileOpen ? (
-                  "Others"
+                  "Visualizers"
                 ) : (
                   <HorizontaLDots />
                 )}
