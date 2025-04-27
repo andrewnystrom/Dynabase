@@ -1,8 +1,8 @@
 package com.dynabase.backend;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.List;
+
+import com.dynabase.backend.dto.UserProfile;
 
 import io.quarkus.security.identity.SecurityIdentity;
 import io.smallrye.jwt.auth.principal.DefaultJWTCallerPrincipal;
@@ -20,19 +20,16 @@ public class UserResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Map<String, Object> me() {
-        Map<String, Object> userInfo = new HashMap<>();
-
-        userInfo.put("username", securityIdentity.getPrincipal().getName());
-
-        Set<String> roles = securityIdentity.getRoles();
-        userInfo.put("roles", roles);
+    public UserProfile me() {
+        String username = securityIdentity.getPrincipal().getName();
+        String email = null;
+        List<String> roles = List.copyOf(securityIdentity.getRoles());
 
         if (securityIdentity.getPrincipal() instanceof DefaultJWTCallerPrincipal jwtPrincipal) {
-            String email = jwtPrincipal.getClaim("email");
-            userInfo.put("email", email);
+            email = jwtPrincipal.getClaim("email");
         }
 
-        return userInfo;
+        return new UserProfile(username, email, roles);
     }
 }
+
