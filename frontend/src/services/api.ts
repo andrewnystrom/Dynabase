@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8081', // Your Quarkus backend
+  baseURL: 'http://localhost:8081', // The Quarkus backend
 });
 
 export function setAuthToken(token: string) {
